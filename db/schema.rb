@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170627030607) do
+ActiveRecord::Schema.define(version: 20170628012838) do
+
+  create_table "appointments", force: :cascade do |t|
+    t.integer  "patient_id"
+    t.datetime "date"
+    t.integer  "situation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["patient_id"], name: "index_appointments_on_patient_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                             default: "", null: false
     t.string   "encrypted_password",                default: "", null: false
-    t.string   "authentication_token",   limit: 30, default: ""
+    t.string   "authentication_token",   limit: 30
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -32,6 +41,8 @@ ActiveRecord::Schema.define(version: 20170627030607) do
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
+    t.index ["cns"], name: "index_users_on_cns", unique: true
+    t.index ["cpf"], name: "index_users_on_cpf", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
