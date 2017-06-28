@@ -36,6 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :phone
       t.string :cns
       t.string :type
+      t.boolean :default_password, default: true
 
       t.timestamps null: false
     end

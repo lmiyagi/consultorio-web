@@ -10,6 +10,11 @@ Rails.application.routes.draw do
         scope module: :users do
           collection do
             post :sign_in, controller: :sessions, action: :create
+            post :sign_out, controller: :sessions, action: :destroy
+          end
+
+          member do
+            post :change_password
           end
 
           resources :appointments, only: [:show, :create]

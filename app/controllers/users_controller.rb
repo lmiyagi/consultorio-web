@@ -13,9 +13,10 @@ class UsersController < ApplicationController
   end
 
   def create
+    # todo password error
     @user = User.create({ password: user_params[:cns] }.merge(user_params))
     if @user.save
-      redirect_to users_path, status: 201
+      redirect_to root_url
     else
       render 'new'
     end

@@ -11,11 +11,14 @@ class Api::V1::Users::SessionsController < Api::V1::ApiController
       @user.show_token = true
       respond_with @user, location: ''
     else
-      render_unauthorized_error
+      render json: APIErrorSerializer.serialize(:wrong_login), status: :unprocessable_entity
     end
   end
 
   def destroy
+    current_user.authentication_token = nil
+    sign_out current_user
+    render json: {}, status: :ok
   end
 
 end

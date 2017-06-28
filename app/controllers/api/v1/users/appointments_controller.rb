@@ -3,6 +3,10 @@ class Api::V1::Users::AppointmentsController < Api::V1::ApiController
 
   def show
     @appointment = current_user.appointments.find_by(id: params[:id])
-    respond_with @appointment, location: ''
+    if @appointment.present?
+      respond_with @appointment, location: ''
+    else
+      render_not_found_error
+    end
   end
 end
