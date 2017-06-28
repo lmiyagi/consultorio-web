@@ -4,7 +4,8 @@ module APIErrorSerializer
   enumerize :messages, in: {
     unprocessable_entity: I18n.t('api.errors.unprocessable_entity'),
     unauthorized:         I18n.t('api.errors.unauthorized'),
-    not_found:            I18n.t('api.errors.not_found')
+    not_found:            I18n.t('api.errors.not_found'),
+    wrong_login:          I18n.t('api.errors.wrong_login')
   }
 
   def self.serialize(error)

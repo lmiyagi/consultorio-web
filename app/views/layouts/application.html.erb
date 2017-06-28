@@ -9,6 +9,14 @@
   </head>
 
   <body>
+    <ul>
+      <%= link_to root_path do %>
+        <li>Home</li>
+      <% end %>
+      <%= link_to new_user_path do %>
+        <li>Cadastrar Usuário</li>
+      <% end %>
+    </ul>
     <%= yield %>
   </body>
 </html>

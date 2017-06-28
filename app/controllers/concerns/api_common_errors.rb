@@ -13,4 +13,12 @@ module APICommonErrors
     render json: APIErrorSerializer.serialize(:not_found), status: :not_found
   end
 
+  def render_error(message, status)
+    render json: {
+        errors: {
+            params: message
+        }
+    }, status: status
+  end
+
 end

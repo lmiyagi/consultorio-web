@@ -225,3 +225,4 @@ pt-BR:
       unauthorized: "Acesso Negado"
       unprocessable_entity: "Entidade Não-Prcessável"
       not_found: "Não Encontrado"
+      wrong_login: "Login ou senha inválidos"
