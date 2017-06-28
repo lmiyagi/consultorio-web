@@ -20,4 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  api:
+    errors:
+      unauthorized: "Unauthorized"
+      unprocessable_entity: "Unprocessable Entity"
+      not_found: "Not Found"
+
