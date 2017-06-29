@@ -11,3 +11,7 @@ User.create(name:     "Leonardo",
             cpf:      "00402883152",
             phone:    "067992784041",
             password: "264370588050004")
+User.last.appointments.create(date: DateTime.now)
+User.last.appointments.create(date: DateTime.now, situation: :scheduled)
+User.last.appointments.create(date: DateTime.now, situation: :pending_cancel)
+User.last.appointments.create(date: DateTime.now, situation: :cancelled)

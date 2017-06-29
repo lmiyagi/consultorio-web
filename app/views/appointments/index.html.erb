@@ -1,0 +1,19 @@
+<h1>Consultas</h1>
+<% @appointments.each do |appointment| %>
+    <h1><%= appointment.patient.name %></h1>
+    <h4><%= appointment.date.in_time_zone("Caracas") %></h4>
+    <% if appointment.situation == :pending_schedule %>
+        <%= link_to confirm_user_appointment_path(id: appointment.id, user_id: appointment.patient.id), method: :put do %>
+            <h4>Confirmar</h4>
+        <% end %>
+        <%= link_to cancel_user_appointment_path(id: appointment.id, user_id: appointment.patient.id), method: :put do %>
+            <h4>Cancelar</h4>
+        <% end %>
+    <% elsif appointment.situation == :pending_cancel %>
+        <%= link_to cancel_user_appointment_path(id: appointment.id, user_id: appointment.patient.id), method: :put do %>
+            <h4>Cancelar</h4>
+        <% end %>
+    <% else %>
+        <h4><%= appointment.situation %></h4>
+    <% end %>
+<% end %>

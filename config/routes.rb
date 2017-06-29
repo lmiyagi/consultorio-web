@@ -14,16 +14,30 @@ Rails.application.routes.draw do
           end
 
           member do
-            post :change_password
+            put :change_password
           end
 
-          resources :appointments, only: [:show, :create]
+          resources :appointments, only: [:index, :show, :create] do
+            member do
+              post :cancel
+            end
+          end
         end
       end
     end
   end
 
-  resources :users, only: [:show, :index, :new, :create]
+  resources :users, only: [:index, :show, :new, :create] do
 
-  root 'home#index'
+    resources :appointments, only: [] do
+      member do
+        put :confirm
+        put :cancel
+      end
+    end
+  end
+
+  resources :appointments, only: [:index]
+
+  root 'appointments#index'
 end
